@@ -6,15 +6,23 @@ const joi = require('joi')
 // required是必填项
 // pattern是正则
 
+const id = joi.required()
 // 账号的验证
 const account = joi.string().alphanum().min(6).max(12).required()
 // 密码的验证
 const password = joi.string().pattern(/^(?![0-9]+$)[a-z0-9]{1,50}$/).min(6).max(12).required()
-
+const newPassword = joi.string().pattern(/^(?![0-9]+$)[a-z0-9]{1,50}$/).min(6).max(12).required()
 exports.limit_login ={
 	// 表示对req.body里面的数据进行验证
 	body:{
 		account,
 		password
+	}
+}
+exports.forgetPassword_limit ={
+	// 表示对req.body里面的数据进行验证
+	body:{
+		id,
+		newPassword
 	}
 }

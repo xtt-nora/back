@@ -19,5 +19,21 @@ router.post('/register',expressJoi(limit_login),loginHandler.register)
 // 登录
 router.post('/login',expressJoi(limit_login),loginHandler.login)
 
+//------------------------------------------------用户管理
+// 添加管理员
+router.post('/createAdmin',loginHandler.createAdmin)
+//获取管理员列表
+router.post('/getAdminList',loginHandler.getAdminList)
+// 修改管理员成功
+router.post('/editAdmin',loginHandler.editAdmin)
+//将管理员降级
+router.post('/changeIdentity',loginHandler.changeIdentity)
+//将用户升级，此时前端传来了身份这个参数
+router.post('/changeIdentityToAdmin',loginHandler.changeIdentityToAdmin)
+//搜索用户
+router.post('/searchUser',loginHandler.searchUser)
+// 删除用户
+router.post('/deleteUser',loginHandler.deleteUser)
+
 // 向外暴露路由
 module.exports = router
